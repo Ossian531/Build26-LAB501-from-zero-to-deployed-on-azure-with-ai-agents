@@ -1,5 +1,5 @@
 ---
-name: Custom issue template
+name: Issue or communication with Skillable
 about: Describe this issue template's purpose here.
 title: ENTER A DESCRIPTIVE TITLE
 labels: ''
