@@ -11,22 +11,22 @@ AI can deploy your app to Azure in 5 minutes. But should you trust what it built
 ```mermaid
 graph LR
     Internet -->|HTTPS| CA[Container App<br/>Python Flask]
+    MI[System-Assigned<br/>Managed Identity] -->|AcrPull role| ACR
+    MI -->|Data Reader role| CDB
 
-    subgraph Deployed["Deployed by Copilot CLI"]
+    subgraph Provisioned["Provisioned via azd up"]
         ACR[Azure Container Registry]
         LA[Log Analytics Workspace]
         subgraph CAE[Container Apps Environment]
-            CA
+            CA --- MI
         end
     end
 
-    subgraph PreProvisioned["Pre-Provisioned"]
+    subgraph Existing["Existing · Managed Separately"]
         CDB[(Cosmos DB<br/>LEGO Dataset)]
     end
 
-    CA -->|Managed Identity<br/>AcrPull| ACR
-    CA -->|Managed Identity<br/>Data Reader| CDB
-    CAE -.->|Diagnostics & Logs| LA
+    CAE -.->|Diagnostic Settings| LA
     LA -.->|KQL Queries| Alerts[Alert Rules]
 ```
 
