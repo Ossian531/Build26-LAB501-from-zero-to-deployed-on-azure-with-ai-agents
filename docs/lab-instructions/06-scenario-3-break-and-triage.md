@@ -10,7 +10,7 @@ Replace `<app>` and `<rg>` with your actual Container App name and resource grou
 az containerapp ingress update --name <app> -g <rg> --target-port 9999
 ```
 
-> ⏱️ **This command takes ~2 minutes** while the new Container Apps revision activates. This is expected — don't Ctrl+C.
+> ⏱️ **This command takes ~30 seconds to 2 minutes** while the new Container Apps revision activates. This is expected — don't Ctrl+C.
 
 Hit the endpoint — you'll get `503 Service Unavailable`.
 
@@ -30,11 +30,11 @@ Watch the triage chain:
 
 1. **Hypothesis formation** — the skill considers multiple failure modes: app crash? ingress misconfiguration? bad image? unhealthy environment?
 2. **Log retrieval** — pulls Container App system logs using `az containerapp logs show --type system`
-3. **Log correlation** — finds `Reason: Pending:PortMismatch` — *"TargetPort 9999 does not match listening port 8000"*
+3. **Log correlation** — finds `Reason: ProbeFailed` — *"Probe of StartUp failed with status code: 1"* (the startup probe fails because the container isn't listening on port 9999)
 4. **Config verification** — cross-references ingress config (port 9999) against the container's listening port (8000, as set by gunicorn in the Dockerfile)
 5. **Root cause + fix** — delivers the exact CLI command to restore the correct port
 
-> 💡 **Skill spotlight:** `azure-diagnostics` doesn't just search logs for errors — it follows a diagnostic reasoning chain. It starts broad (what could cause 503?), narrows via evidence (system logs show PortMismatch), and confirms with config data. This is the same triage pattern a senior SRE would follow.
+> 💡 **Skill spotlight:** `azure-diagnostics` doesn't just search logs for errors — it follows a diagnostic reasoning chain. It starts broad (what could cause 503?), narrows via evidence (system logs show ProbeFailed), and confirms with config data. This is the same triage pattern a senior SRE would follow.
 
 ---
 

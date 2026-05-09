@@ -51,9 +51,9 @@
 **Fix:** Verify you're running Python 3.13+ with `python --version`. Try `pip install --upgrade pip` first.
 
 ## PowerShell quote escaping in KQL queries
-**Symptom:** KQL `where Reason_s == "PortMismatch"` fails with syntax errors in PowerShell.
+**Symptom:** KQL `where Reason_s == "ProbeFailed"` fails with syntax errors in PowerShell.
 **Cause:** PowerShell handles double quotes differently than bash.
-**Fix:** Use the `has` operator instead: `where Reason_s has "PortMismatch"`. The AI typically handles this automatically.
+**Fix:** Use the `has` operator instead: `where Reason_s has "ProbeFailed"`. The AI typically handles this automatically.
 
 ## Gunicorn port mismatch after deployment
 **Symptom:** The Container App shows 503 even after a fresh deploy.

@@ -18,7 +18,7 @@ Watch how it builds the investigation:
 
 1. **Workspace discovery** — locates your Log Analytics workspace from the resource group
 2. **Table exploration** — queries `ContainerAppSystemLogs_CL` to find available event types
-3. **Event distribution** — runs a KQL `summarize count() by Reason_s` to show the breakdown: PortMismatch events, ReplicaUnhealthy impact, RevisionUpdate recovery
+3. **Event distribution** — runs a KQL `summarize count() by Reason_s` to show the breakdown: ProbeFailed events (from the startup probe failing on the wrong port), ReplicaUnhealthy impact, RevisionUpdate recovery
 4. **Incident timeline** — writes a KQL query with `earliest(TimeGenerated)` and `latest(TimeGenerated)` to calculate exact downtime duration
 5. **Recovery confirmation** — checks for `RevisionReady` events to prove the fix worked
 
@@ -26,18 +26,18 @@ Watch how it builds the investigation:
 
 **Review the KQL the AI wrote.** Copy a query and modify it — try adding a `| where TimeGenerated > ago(1h)` filter or changing the `summarize` to include `bin(TimeGenerated, 5m)` for a time-series view. Run modified queries in the Copilot CLI or paste them into the Azure Portal's Log Analytics query editor.
 
-✅ **Checkpoint:** You've seen KQL queries showing the PortMismatch events, the incident timeline, and the recovery confirmation.
+✅ **Checkpoint:** You've seen KQL queries showing the ProbeFailed events (caused by the port mismatch), the incident timeline, and the recovery confirmation.
 
 ---
 
-## Part B — Operationalize It (~8 min)(LEARN-ONLY)
+## Part B — Operationalize It (~8 min)
 
-> This section is learn-only. The steps below are expected to fail in the lab environment due to existing policy constraints.
+> ⚠️ **Note:** The steps below may fail in some lab environments due to existing policy constraints. Try them anyway — if they succeed, you'll have a working alert rule. If they fail, focus on understanding the KQL and alert configuration pattern.
 
 **Say to Copilot:**
 
 ```
-Create a KQL alert rule that fires when PortMismatch events appear in the Container App system logs.
+Create a KQL alert rule that fires when ProbeFailed events appear in the Container App system logs.
 ```
 
 ### `azure-observability` continues
@@ -60,6 +60,8 @@ The AI suggests: replica health, restart loops, high latency, 5xx spikes, memory
 ✅ **Checkpoint:** `az monitor scheduled-query list -g <rg> -o table` shows your alert rule.
 
 **Takeaway:** Two prompts, one skill (`azure-observability`), and you went from "the incident is over" to "this class of incident will page me next time." The real 300-level value: you can now read and modify these KQL queries yourself.
+
+> 💡 **Tip:** The `--condition` parameter for `az monitor scheduled-query create` uses a specific DSL format, not raw KQL. The condition references the table name from your KQL query (e.g., `ContainerAppSystemLogs_CL`), while the full KQL goes in `--condition-query`. If the command fails, check that these two parameters are consistent.
 
 ---
 
