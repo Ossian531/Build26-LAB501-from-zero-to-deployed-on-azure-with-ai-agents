@@ -1,6 +1,8 @@
 import os
 import math
-from flask import Flask, render_template, request, abort
+import urllib.parse
+import urllib.request
+from flask import Flask, render_template, request, abort, Response
 from azure.cosmos import CosmosClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from dotenv import load_dotenv
@@ -141,6 +143,33 @@ def detail(set_id):
         ],
     )
     return render_template("detail.html", set=lego_set, related=related)
+
+
+@app.route("/image-proxy")
+def image_proxy():
+    """Proxy remote images (e.g. cdn.rebrickable.com) that are blocked from
+    direct browser access in some lab/network environments."""
+    url = request.args.get("url", "").strip()
+    if not url or not url.startswith(("http://", "https://")):
+        abort(400)
+    # Only allow proxying from the rebrickable CDN to avoid an open proxy.
+    allowed_hosts = ("cdn.rebrickable.com",)
+    try:
+        parsed = urllib.parse.urlparse(url)
+    except Exception:
+        abort(400)
+    if parsed.hostname not in allowed_hosts:
+        abort(403)
+
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "lego-vault-proxy/1.0"})
+        with urllib.request.urlopen(req, timeout=10) as upstream:
+            data = upstream.read()
+            content_type = upstream.headers.get("Content-Type", "image/jpeg")
+    except Exception:
+        abort(502)
+
+    return Response(data, content_type=content_type, headers={"Cache-Control": "public, max-age=86400"})
 
 
 @app.errorhandler(404)

@@ -22,7 +22,7 @@
         <!-- Image Panel -->
         <div class="relative">
             <div class="bg-gradient-to-br from-sw-gray/60 to-sw-dark border border-sw-yellow/15 rounded-2xl overflow-hidden aspect-square">
-                <img src="{{ set.image_url }}"
+                <img src="{{ url_for('image_proxy', url=set.image_url) }}"
                      alt="{{ set.name }}"
                      class="w-full h-full object-contain p-8 hover:scale-105 transition-transform duration-500"
                      onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%231A1A2E%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%23FFE81F%22 font-size=%2240%22>🧱</text></svg>'">
@@ -117,7 +117,7 @@
             <a href="{{ url_for('detail', set_id=r.id) }}" class="set-card group">
                 <div class="bg-sw-gray/40 border border-sw-yellow/10 rounded-xl overflow-hidden hover:border-sw-yellow/30 transition-all duration-300 hover:-translate-y-0.5">
                     <div class="aspect-square bg-gradient-to-br from-sw-gray/50 to-sw-dark overflow-hidden">
-                        <img src="{{ r.image_url }}"
+                        <img src="{{ url_for('image_proxy', url=r.image_url) }}"
                              alt="{{ r.name }}"
                              class="w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-300"
                              loading="lazy"
