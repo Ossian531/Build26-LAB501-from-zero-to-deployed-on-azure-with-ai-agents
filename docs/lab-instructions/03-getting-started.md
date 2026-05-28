@@ -15,7 +15,7 @@ cd Build26-LAB501
 
 ## 2. Copy the Starter App
 
-The `src/` directory contains a ready-to-go Python Flask application — a LEGO set browser backed by Azure Cosmos DB. Copy it to a new `lego-app` working directory and initialize it as its own Git repo:
+The `src/` directory contains a ready-to-go Python Flask application — a LEGO set browser backed by Azure Cosmos DB. Copy it to a new `lego-set-browser` working directory and initialize it as its own Git repo:
 
 ```powershell
 Copy-Item -Recurse src lego-set-browser
