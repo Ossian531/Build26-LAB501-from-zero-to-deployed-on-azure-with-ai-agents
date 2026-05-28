@@ -43,7 +43,7 @@ Once your content is in the repo, use these three phrases with Copilot to build 
 
 What happens when you let AI agents do the building? In this hands-on lab, you'll go from an empty terminal to a deployed app on Azure — with GitHub Copilot CLI and coding agents handling the scaffolding, coding, debugging, and deployment. You'll use the new Azure skills to provision resources and wire up services through natural language, no portal required. This isn't a demo you watch. You'll walk out with a real, working dev workflow you can take straight to your next project.
 
-Across 75 minutes (Level 300), you'll ship a Python Flask LEGO set browser to Azure Container Apps backed by Azure Cosmos DB, then put on your architect hat and evaluate the AI's decisions: review the generated Bicep, harden the deployment, break it on purpose, and run a full forensic investigation with KQL — all from GitHub Copilot CLI.
+Across 75 minutes (Level 300), you'll ship two services from a single Copilot prompt — a Python **Flask LEGO set browser** on Azure Container Apps and a Python **Azure Function App** (Flex Consumption, HTTP-triggered) that batch-upserts LEGO sets into Azure Cosmos DB — then put on your architect hat and evaluate the AI's decisions: review the generated Bicep, harden the deployment with managed identity + RBAC, break it on purpose, and run a full forensic investigation with KQL — all from GitHub Copilot CLI.
 
 ### 🏫 Getting started in a guided session
 
@@ -73,7 +73,7 @@ Try these prompts with GitHub Copilot to explore the topics from this session. O
 
 Use these as a starting point — or write your own!
 
-- "Scaffold a Python Flask app on Azure Container Apps with Bicep and `azd`, using a system-assigned managed identity to pull images from ACR."
+- "Scaffold a Python Flask app on Azure Container Apps **and** a Python Azure Function App on Flex Consumption (HTTP-triggered, batch-upserts to Cosmos DB) with Bicep and `azd`, using managed identity for ACR pulls and Cosmos DB access."
 - "Review my Container App Bicep for production-readiness gaps — managed identity, RBAC, VNet integration, diagnostic settings, and health probes — and propose fixes."
 - "Find the minimum-privilege Cosmos DB RBAC role for an app that only reads data, and generate the `az cosmosdb sql role assignment create` command."
 - "Visualize the resources in my resource group as a Mermaid architecture diagram, including cross-resource-group dependencies like Cosmos DB."
@@ -83,7 +83,7 @@ Use these as a starting point — or write your own!
 ### 💻 Technologies Used
 
 1. GitHub Copilot CLI + Azure Skills plugin (`azure-prepare`, `azure-validate`, `azure-deploy`, `azure-rbac`, `azure-resource-visualizer`, `azure-diagnostics`) and the Azure MCP Server
-2. Azure Container Apps, Azure Container Registry, and Azure Cosmos DB (NoSQL) with managed identity + RBAC
+2. Azure Container Apps, **Azure Functions (Python, Flex Consumption)** for batch LEGO set ingestion, Azure Container Registry, and Azure Cosmos DB (NoSQL) with managed identity + RBAC
 3. Azure Developer CLI (`azd`), Bicep, Docker, Python 3.13 / Flask, Azure Monitor + Log Analytics, and KQL
 
 ### 📚 Resources and Next Steps
