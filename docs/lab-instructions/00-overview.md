@@ -9,25 +9,86 @@ AI can deploy your app to Azure in 5 minutes. But should you trust what it built
 ### Target Architecture
 
 ```mermaid
-graph LR
-    Internet -->|HTTPS| CA[Container App<br/>Python Flask]
-    MI[System-Assigned<br/>Managed Identity] -->|AcrPull role| ACR
-    MI -->|Data Reader role| CDB
+graph TB
+    User((User<br/>Browser))
+    Admin((Ingest<br/>Client))
 
-    subgraph Provisioned["Provisioned via azd up"]
-        ACR[Azure Container Registry]
-        LA[Log Analytics Workspace]
-        subgraph CAE[Container Apps Environment]
-            CA --- MI
+    subgraph RG["Resource Group"]
+        subgraph Web["Web Tier"]
+            ACR["Azure Container Registry"]
+            CAE["Container Apps Environment"]
+            CA["Container App"]
+        end
+
+        subgraph Api["API Tier"]
+            ASP["App Service Plan"]
+            FUNC["Function App"]
+            UAMI["User-Assigned Managed Identity"]
+        end
+
+        subgraph Storage["Backing Storage"]
+            ST["Storage Account"]
+            BLOB["Blob Container"]
+        end
+
+        subgraph Obs["Observability"]
+            LAW["Log Analytics Workspace"]
+            AI["Application Insights"]
+        end
+
+        subgraph VNetOpt["Optional"]
+            VNET["Virtual Network"]
+            APPSUB["Subnet"]
+            PESUB["Subnet"]
+            PE["Private Endpoints"]
         end
     end
 
-    subgraph Existing["Existing · Managed Separately"]
-        CDB[(Cosmos DB<br/>LEGO Dataset)]
+    subgraph CosmosRG["External Resource Group"]
+        COSMOS["Cosmos DB Account"]
+        DB["Cosmos DB Database"]
+        CONT["Cosmos DB Container"]
     end
 
-    CAE -.->|Diagnostic Settings| LA
-    LA -.->|KQL Queries| Alerts[Alert Rules]
+    %% User flows
+    User ==>|"HTTPS"| CA
+    Admin ==>|"HTTPS POST<br/>x-functions-key"| FUNC
+
+    %% Web tier
+    ACR -->|"pull image<br/>(admin creds via secret)"| CA
+    CA --- CAE
+    CAE -->|"app logs"| LAW
+
+    %% API tier
+    FUNC --- ASP
+    FUNC -.->|"assigned"| UAMI
+    UAMI -->|"Storage Blob Data Owner<br/>+ Contributor"| ST
+    ST --> BLOB
+    BLOB -->|"deployment package"| FUNC
+
+    %% Cosmos data-plane (cross-RG)
+    CA ==>|"SQL queries via SDK<br/>System-MI → Cosmos Data Reader"| COSMOS
+    UAMI ==>|"upsert_item via SDK<br/>UAMI → Cosmos Data Contributor"| COSMOS
+    COSMOS --> DB --> CONT
+
+    %% Telemetry
+    CA -.->|"APPLICATIONINSIGHTS_<br/>CONNECTION_STRING"| AI
+    FUNC -.->|"telemetry (Entra auth)"| AI
+    AI --- LAW
+
+    %% Optional VNet path
+    VNET --- APPSUB
+    VNET --- PESUB
+    FUNC -.->|"VNet integration<br/>(if enabled)"| APPSUB
+    PESUB -.->|"private link"| PE
+    PE -.->|"private access<br/>(if enabled)"| ST
+
+    classDef external fill:#fef3c7,stroke:#d97706,stroke-width:2px;
+    classDef optional fill:#f3f4f6,stroke:#9ca3af,stroke-dasharray: 5 5;
+    classDef identity fill:#ede9fe,stroke:#7c3aed;
+    class COSMOS,DB,CONT,CosmosRG external;
+    class VNET,APPSUB,PESUB,PE,VNetOpt optional;
+    class UAMI identity;
 ```
 
 ## What You'll Learn
