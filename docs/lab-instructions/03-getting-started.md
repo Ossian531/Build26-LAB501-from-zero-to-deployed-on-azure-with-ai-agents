@@ -33,7 +33,7 @@ git config --global user.email "you@example.com"
 git init && git add -A && git commit -m "init"
 ```
 
-All subsequent commands should be run from the `lego-app` directory.
+All subsequent commands should be run from the `lego-set-browser` directory.
 
 > 💡 **What's in the starter app?** `app.py` is a Flask web application with routes for browsing, searching, and viewing LEGO sets. It connects to an Azure Cosmos DB to query set data. `requirements.txt` defines the Python dependencies (Flask, azure-cosmos, azure-identity, gunicorn). A `Dockerfile` is included for containerized deployment. The app uses `DefaultAzureCredential` for passwordless authentication to Cosmos DB.
 
