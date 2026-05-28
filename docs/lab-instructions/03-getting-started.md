@@ -18,10 +18,10 @@ cd Build26-LAB501
 The `src/` directory contains a ready-to-go Python Flask application — a LEGO set browser backed by Azure Cosmos DB. Copy it to a new `lego-app` working directory and initialize it as its own Git repo:
 
 ```powershell
-Copy-Item -Recurse src lego-app
+Copy-Item -Recurse src lego-set-browser
 ```
 ```powershell
-cd lego-app
+cd lego-set-browser
 ```
 ```powershell
 git config --global user.name "Your Name"
