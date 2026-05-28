@@ -1,69 +1,38 @@
-# 🚀 Get Started
-
-**This repo is where attendees go to continue their learning after your session — and your Copilot agent will help you set it up.**
-
-### Step 1: Open your repo
-
-Open this repo in a **Codespace** (click the green **Code** button → **Create a Codespace**) — or clone it locally. Then open **GitHub Copilot Chat**.
-
-### Step 2: Add your content
-
-Give the agent something to work with. Drag files into the Explorer panel — session abstracts, outlines, screenshots, notes — and drop them in one of two places:
-
-| Where to put it | What goes there | Who sees it |
-|---|---|---|
-| **`_remove-before-publish/`** | Internal reference materials (abstracts, outlines, screenshots, planning docs) | **Copilot only** — never published |
-| **`/docs/`, `/src/`, or repo root** | Lab instructions, demo code, sample data, getting-started guides | **Attendees** — published with the repo |
-
-> 💡 Not sure? Start by dropping your session abstract or outline into `_remove-before-publish/`. The agent will figure out what to do with it.
-
-### Step 3: Ask the Agent
-
-Once your content is in the repo, use these three phrases with Copilot to build out your session repo:
-
-| Phrase to use with Copilot | What it does | When to run it |
-|---|---|---|
-| **"Help me get started"** | Sets up session title, description, outcomes, and owners | After you've added your session abstract or outline to the repo |
-| **"Help me refine content"** | Organizes your session content into the repo | Each time you add or update content |
-| **"Help me finalize"** | Final review, cleanup, and publication prep | When you're ready to publish |
-
-> 💡 **These three phrases are just the starting point.** Copilot can do much more — try asking it to brainstorm next steps for attendees, generate code samples, or build out your repo structure. Don't be afraid to put it in plan mode and ask for what you need.
-
----
-
 <p align="center">
 <img src="img/banner-build-26.png" alt="Microsoft Build 2026" width="1200"/>
 </p>
 
 # [Microsoft Build 2026](https://build.microsoft.com)
 
-## 🔥 BRKXXX: SESSION TITLE
+## 🔥 LAB501: From Zero to Deployed on Azure with AI Agents
 
 ### Session Description
 
-*Add Session Description*
+What happens when you let AI agents do the building? In this hands-on lab, you'll go from an empty terminal to a deployed app on Azure — with GitHub Copilot CLI and coding agents handling the scaffolding, coding, debugging, and deployment. You'll use the new Azure skills to provision resources and wire up services through natural language, no portal required. This isn't a demo you watch. You'll walk out with a real, working dev workflow you can take straight to your next project.
+
+Across 75 minutes (Level 300), you'll ship two services from a single Copilot prompt — a Python **Flask LEGO set browser** on Azure Container Apps and a Python **Azure Function App** that batch-upserts LEGO sets into Azure Cosmos DB — then put on your architect hat and evaluate the AI's decisions: review the generated Bicep, harden the deployment with managed identity + RBAC, break it on purpose, and run a full forensic investigation with KQL — all from GitHub Copilot CLI.
 
 ### 🏫 Getting started in a guided session
 
 To get started in a guided lab session:
-- <!-- step 1 -->
-- <!-- step 2 -->
-- <!-- step 3 -->
+- Sign in to your Skillable lab VM and start **Docker Desktop**
+- Open PowerShell and run `az login`, `azd auth login`, then `copilot` — follow [Login & Launch](docs/lab-instructions/02-login-and-launch.md) to install the **Azure Skills** plugin (`/plugin install azure@azure-skills`)
+- Follow the [Lab Overview](docs/lab-instructions/00-overview.md) and work through the four scenarios in order
 
 ### 🏠 Getting started in your own environment
 
 If you're following these steps at your own pace:
-- Clone this repository
-- Set up your development environment
-- <!-- step 3 -->
+- Clone this repository: `git clone https://github.com/microsoft/Build26-LAB501.git`
+- Install the [prerequisites](docs/lab-instructions/01-prerequisites.md): Python 3.13+, Docker Desktop, Git, Azure CLI (with Bicep), Azure Developer CLI (`azd`), GitHub Copilot CLI, and an Azure subscription with Contributor access
+- Provision your own Azure Cosmos DB with the LEGO dataset (database `LegoDatabase`, container `legoSets`), then start at [Set Up the Starter App](docs/lab-instructions/03-getting-started.md) and work through the four scenarios
 
 ### 🧠 Learning Outcomes
 
 By the end of this session, you will be able to:
 
-- <!-- outcome 1 -->
-- <!-- outcome 2 -->
-- <!-- outcome 3 -->
+- Chain Azure skills (`azure-prepare` → `azure-validate` → `azure-deploy`) from a single natural-language prompt in GitHub Copilot CLI to scaffold IaC, Docker, and config and ship a containerized app to Azure
+- Critically review AI-generated Bicep, Dockerfiles, and architecture diagrams — spot the production gaps and use `azure-rbac` and `azure-resource-visualizer` to close them with least-privilege managed identity and accurate documentation
+- Triage and operationalize production issues with `azure-diagnostics` — follow its reasoning chain from system logs to root cause, then turn the post-mortem into KQL queries and alert rules without ever opening the Azure Portal
 
 ### 💬 Keep Learning with Copilot
 
@@ -71,21 +40,31 @@ Try these prompts with GitHub Copilot to explore the topics from this session. O
 
 Use these as a starting point — or write your own!
 
-<!-- Prompts will be tailored to this session's content during repo setup. -->
-
-> *Prompts coming soon — check back after the session content is finalized.*
+- "Scaffold a Python Flask app on Azure Container Apps **and** a Python Azure Function App with Bicep and `azd`, using managed identity for ACR pulls and Cosmos DB access."
+- "Review my Container App Bicep for production-readiness gaps — managed identity, RBAC, VNet integration, diagnostic settings, and health probes — and propose fixes."
+- "Find the minimum-privilege Cosmos DB RBAC role for an app that only reads data, and generate the `az cosmosdb sql role assignment create` command."
+- "Visualize the resources in my resource group as a Mermaid architecture diagram, including cross-resource-group dependencies like Cosmos DB."
+- "My Container App is returning 503. Pull system logs, correlate with ingress configuration, and tell me the root cause and fix."
+- "Write a KQL query against `ContainerAppSystemLogs_CL` that calculates downtime between the first `ProbeFailed` event and the next `RevisionReady` event, then turn it into an `az monitor scheduled-query create` alert rule."
 
 ### 💻 Technologies Used
 
-1. <!-- technology 1 -->
-1. <!-- technology 2 -->
-1. <!-- technology 3 -->
+1. GitHub Copilot CLI + Azure Skills plugin (`azure-prepare`, `azure-validate`, `azure-deploy`, `azure-rbac`, `azure-resource-visualizer`, `azure-diagnostics`) and the Azure MCP Server
+2. Azure Container Apps, **Azure Functions (Python, Flex Consumption)** for batch LEGO set ingestion, Azure Container Registry, and Azure Cosmos DB (NoSQL) with managed identity + RBAC
+3. Azure Developer CLI (`azd`), Bicep, Docker, Python 3.13 / Flask, Azure Monitor + Log Analytics, and KQL
 
 ### 📚 Resources and Next Steps
 
 | Resource | Description |
 |:---------|:------------|
 | [https://aka.ms/build26-next-steps](https://aka.ms/build26-next-steps) | Take the next step in your learning journey after Build 2026 |
+| [Lab Overview](docs/lab-instructions/00-overview.md) | Architecture diagram, skills map, and section-by-section lab guide |
+| [What's Next](docs/lab-instructions/09-whats-next.md) | Extension ideas — private endpoints, VNet integration, Key Vault, CI/CD with OIDC, Terraform |
+| [Announcing the Azure Skills Plugin](https://devblogs.microsoft.com/all-things-azure/announcing-the-azure-skills-plugin/) | Background on the Azure skills used throughout the lab |
+| [Azure MCP Server docs](https://learn.microsoft.com/azure/developer/azure-mcp-server) | Reference for the MCP tools that power the Azure skills |
+| [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli) | Install, configure, and extend GitHub Copilot CLI |
+| [Deploy and manage Container Apps](https://learn.microsoft.com/training/paths/deploy-manage-container-apps) | Microsoft Learn path for Azure Container Apps |
+| [Azure Cosmos DB documentation](https://learn.microsoft.com/azure/cosmos-db) | Data modeling, RBAC, and operational guidance for Cosmos DB |
 
 
 ### 🌟 Microsoft Learn MCP Server
@@ -107,10 +86,10 @@ For more information, setup instructions for other dev clients, and to post comm
 
 <table>
 <tr>
-    <td align="center"><a href="http://github.com/yourGitHubHandle">
-        <img src="https://github.com/yourGitHubHandle.png" width="100px;" alt="INSERT NAME HERE"/><br />
-        <sub><b>INSERT NAME HERE</b></sub></a><br />
-            <a href="https://github.com/yourGitHubHandle" title="talk">📢</a>
+    <td align="center"><a href="http://github.com/yunjchoi">
+        <img src="https://github.com/yunjchoi.png" width="100px;" alt="Yun Jung Choi"/><br />
+        <sub><b>Yun Jung Choi</b></sub></a><br />
+            <a href="https://github.com/yunjchoi" title="talk">📢</a>
     </td>
 </tr></table>
 
