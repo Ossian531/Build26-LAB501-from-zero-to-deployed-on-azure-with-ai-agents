@@ -12,9 +12,16 @@ load_dotenv()
 app = Flask(__name__)
 
 # Cosmos DB configuration
-COSMOS_ENDPOINT = os.environ.get("COSMOS_ENDPOINT", "https://lego-cosmos-db-ugiocc64astx6.documents.azure.com:443/")
+COSMOS_ENDPOINT = os.environ.get("COSMOS_ENDPOINT")
 COSMOS_DATABASE = os.environ.get("COSMOS_DATABASE", "LegoDatabase")
 COSMOS_CONTAINER = os.environ.get("COSMOS_CONTAINER", "legoSets")
+
+if not COSMOS_ENDPOINT:
+    raise RuntimeError(
+        "COSMOS_ENDPOINT is not set. Copy src/.env.sample to src/.env and set "
+        "COSMOS_ENDPOINT to your Cosmos DB account endpoint "
+        "(e.g. https://<your-cosmos-account>.documents.azure.com:443/)."
+    )
 
 ITEMS_PER_PAGE = 24
 
