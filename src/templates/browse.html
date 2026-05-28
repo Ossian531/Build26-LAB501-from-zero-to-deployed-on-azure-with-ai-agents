@@ -105,7 +105,7 @@
             <div class="bg-sw-gray/40 border border-sw-yellow/10 rounded-xl overflow-hidden hover:border-sw-yellow/30 transition-all duration-300 hover:shadow-lg hover:shadow-sw-yellow/5 hover:-translate-y-0.5 h-full flex flex-col">
                 <!-- Image -->
                 <div class="relative aspect-square bg-gradient-to-br from-sw-gray/50 to-sw-dark overflow-hidden">
-                    <img src="{{ s.image_url }}"
+                    <img src="{{ url_for('image_proxy', url=s.image_url) }}"
                          alt="{{ s.name }}"
                          class="w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-300"
                          loading="lazy"
