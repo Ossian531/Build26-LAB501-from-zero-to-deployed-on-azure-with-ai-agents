@@ -32,6 +32,7 @@ git config --global user.email "you@example.com"
 ```powershell
 git init && git add -A && git commit -m "init"
 ```
+If you run into an issue, please try typing out the command and run one command at a time. 
 
 All subsequent commands should be run from the `lego-set-browser` directory.
 
