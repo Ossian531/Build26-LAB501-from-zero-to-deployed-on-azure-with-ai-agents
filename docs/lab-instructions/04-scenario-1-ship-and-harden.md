@@ -4,11 +4,9 @@ AI can scaffold your Azure deployment in minutes. But would you push AI-generate
 
 ## Part A — Ship It (~25 min)
 
-> 🚀 **Speed tip:** This lab runs in a safe, sandboxed environment. Consider enabling **yolo mode** in Copilot CLI (`/yolo`) to auto-approve commands and skip confirmation prompts — it can save several minutes over the course of the lab.
-
 > 💡 **Make sure your app is NOT currently running.** If you started `python app.py` during the checkpoint, stop it with **Ctrl+C** before proceeding.
 
-If you're not already in the **lego-set-browser** directory, cd into it, then prompt `copilot` to start a Copilot session. Then, say to Copilot:
+If you're not already in the **lego-set-browser** directory, cd into it, then prompt `copilot --yolo` to start a Copilot session in **yolo mode**. The `--yolo` flag auto-approves commands and skips confirmation prompts — safe here because the lab runs in a sandboxed environment, and it can save you several minutes over the course of the lab. Then, say to Copilot:
 
 ```
   Create and deploy 2 Azure services 
