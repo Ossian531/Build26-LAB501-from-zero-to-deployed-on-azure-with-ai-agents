@@ -52,6 +52,18 @@ git log --oneline
 
 You should see the initial commit.
 
+Create a Python virtual environment:
+
+```powershell
+python -m venv .venv
+```
+
+Activate the environment:
+
+```powershell
+.\.venv\Scripts\activate
+```
+
 Install dependencies and start the app:
 
 ```powershell
