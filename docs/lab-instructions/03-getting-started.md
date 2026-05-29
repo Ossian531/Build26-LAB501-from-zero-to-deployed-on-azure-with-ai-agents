@@ -30,7 +30,13 @@ git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 ```
 ```powershell
-git init && git add -A && git commit -m "init"
+git init
+```
+```powershell
+git add -A
+```
+```powershell
+git commit -m "init"
 ```
 If you run into an issue, please try typing out the command and run one command at a time. 
 

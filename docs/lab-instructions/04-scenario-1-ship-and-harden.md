@@ -37,28 +37,38 @@ This single prompt triggers a **three-skill chain** — watch Copilot invoke eac
 
 ### 1️⃣ `azure-prepare` activates first
 
-Watch how it:
-- Scans your workspace — finds `requirements.txt` and `app.py`, classifies it as a Python Flask web app
-- Chooses Container Apps as the hosting target (do you agree with that choice over App Service or Functions?)
-- Reviews the existing `Dockerfile` (the app already has one — watch whether the skill uses it as-is or regenerates it)
-- Generates infrastructure and configuration files: `azure.yaml` and Bicep templates in `infra/` (typically `main.bicep` and supporting modules)
-- Creates an AZD environment and sets your subscription + region
+Watch how it handles **two very different starting points** in a single pass — this is the key insight of this step:
 
-> 💡 **Skill spotlight:** `azure-prepare` doesn't just generate files — it reads skill references for your language runtime, Bicep patterns, and AZD conventions. Open the generated Bicep files in `infra/` — these came from skill reference templates, not generic boilerplate. Notice how it handles the existing `Dockerfile` and the Cosmos DB connection configuration.
+- **Flask app → Container Apps (starting point: existing source code in your workspace):**
+  - Scans your workspace — finds `requirements.txt` and `app.py`, classifies it as a Python Flask web app
+  - Chooses Container Apps as the hosting target (do you agree with that choice over App Service or Functions?)
+  - Reviews the existing `Dockerfile` (the app already has one — watch whether the skill uses it as-is or regenerates it)
+  - Generates infrastructure *around* code that already exists
+- **Python Function App → Azure Functions (starting point: just your prompt — no source code yet):**
+  - There is no function code in your workspace. The skill reads your prompt (HTTP POST trigger, JSON array of LEGO sets, batch-upsert to Cosmos DB) and **fetches a suitable Azure Functions Python template**
+  - Modifies that template to fit your scenario: rewrites the handler to accept the LEGO JSON shape, maps `set_number → id`, wires it to the existing Cosmos DB database/container, and adds the user-assigned managed identity binding
+  - Picks **Flex Consumption (FC1)** as the hosting plan and adds a Storage account for the deployment package
+  - Generates infrastructure *and* the source code, from a template
+- **Shared across both services:**
+  - Produces a single `azure.yaml` that declares both services and Bicep templates in `infra/` (typically `main.bicep` plus per-service modules)
+  - Creates an AZD environment and sets your subscription + region
+
+> 💡 **Skill spotlight:** `azure-prepare` doesn't just generate files — it reads skill references for your language runtime, Bicep patterns, AZD conventions, and the Azure Functions Flex Consumption template. Open the generated files: the Bicep in `infra/` and the new `function_app.py` came from skill reference templates, not generic boilerplate.
 
 ### 2️⃣ `azure-validate` activates next
 
-It runs pre-flight checks:
-- Compiles Bicep (`az bicep build`) — catches syntax errors before deployment
-- Verifies Docker is running — deployment will fail without it
+It runs pre-flight checks across both services:
+- Compiles Bicep (`az bicep build`) for the Container App and the Function App modules — catches syntax errors before deployment
+- Verifies Docker is running — the Container App image build will fail without it
+- Verifies the Python runtime version and that Flex Consumption (FC1) is available in your selected region — Functions deployment fails fast otherwise
 - Confirms your subscription access and that the resource group name isn't taken
 
 ### 3️⃣ `azure-deploy` activates last
 
-It runs `azd up --no-prompt`, which:
-- Provisions ACR, Container Apps Environment, Log Analytics, and the app
-- Builds your Docker image and pushes it to ACR
-- Deploys the container with the Cosmos DB environment variables and returns a live HTTPS endpoint
+It runs `azd up --no-prompt`, which provisions and deploys both services in one orchestrated run:
+- **Container App side:** Provisions ACR, Container Apps Environment, Log Analytics, and the Container App; builds your Docker image and pushes it to ACR
+- **Function App side:** Provisions the Storage account, Flex Consumption (FC1) plan, user-assigned managed identity, Application Insights, and the Function App; packages and deploys the Python function code
+- Wires Cosmos DB environment variables into both services and returns live HTTPS endpoints (a Container Apps URL for the Flask UI, and a Functions URL for the ingest endpoint)
 
 ### Verify it works
 
