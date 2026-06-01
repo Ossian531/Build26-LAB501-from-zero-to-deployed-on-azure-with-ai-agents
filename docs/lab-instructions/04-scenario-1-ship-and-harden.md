@@ -26,7 +26,7 @@ If you're not already in the **lego-set-browser** directory, cd into it, then pr
    - User-assigned managed identity for Cosmos DB (Built-in Data Contributor)
    
    **2. Flask app in this folder → Azure Container Apps:**
-   - Name: ca-web-lego-set-browser-dev-<XXXX>
+   - Name: ca-web-lego-<XXXX>
    - Already uses DefaultAzureCredential + env vars COSMOS_ENDPOINT, COSMOS_DATABASE, COSMOS_CONTAINER
    - System-assigned managed identity for Cosmos DB (Built-in Data Reader)
 ```
