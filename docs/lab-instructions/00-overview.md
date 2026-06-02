@@ -2,7 +2,7 @@
 
 **Hands-On Lab (75 min) | Level: 300 | LAB501**
 
-AI can deploy your app to Azure in 5 minutes. But should you trust what it built? In this lab, you'll use GitHub Copilot CLI with Azure skills to deploy a live Container App — a Python Flask application that browses a LEGO set catalog backed by Azure Cosmos DB — then put on your architect hat and evaluate the AI's decisions. You'll review generated Bicep, identify what's missing for production, direct the AI to harden the deployment, break the app on purpose, and run a full forensic investigation — all without opening the Azure Portal.
+AI can deploy your app to Azure in 5 minutes. But should you trust what it built? In this lab, you'll use GitHub Copilot CLI with Azure skills to deploy a live Container App — a Python Flask application that browses a LEGO set catalog backed by Azure Cosmos DB — along with a Function App that upserts new LEGO sets into Cosmos DB. Then, you'll put on your architect hat and evaluate the AI's decisions. You'll review the generated Bicep files, identify what's missing for production readiness, direct the AI to harden the deployment, intentionally break the app, and run a full forensic investigation — all without opening the Azure Portal.
 
 > 💡 **AI responses may vary** from what's described in this guide. Focus on which skills activate and the reasoning patterns, not exact output. The prompts are tested, but AI is non-deterministic — your results may look slightly different.
 
