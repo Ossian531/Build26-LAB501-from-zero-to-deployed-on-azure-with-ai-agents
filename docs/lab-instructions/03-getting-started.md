@@ -44,38 +44,9 @@ All subsequent commands should be run from the `lego-set-browser` directory.
 
 > 💡 **What's in the starter app?** `app.py` is a Flask web application with routes for browsing, searching, and viewing LEGO sets. It connects to an Azure Cosmos DB to query set data. `requirements.txt` defines the Python dependencies (Flask, azure-cosmos, azure-identity, gunicorn). A `Dockerfile` is included for containerized deployment. The app uses `DefaultAzureCredential` for passwordless authentication to Cosmos DB.
 
-## 3. Checkpoint: Verify Setup
+## 3. Local Testing
 
-```powershell
-git log --oneline
-```
-
-You should see the initial commit.
-
-Create a Python virtual environment:
-
-```powershell
-python -m venv .venv
-```
-
-Activate the environment:
-
-```powershell
-.\.venv\Scripts\activate
-```
-
-Install dependencies and start the app:
-
-```powershell
-pip install -r requirements.txt
-```
-```powershell
-python app.py
-```
-
-> ⚠️ **Cosmos DB connectivity:** At this stage the app has no `COSMOS_ENDPOINT` configured and no Cosmos DB account provisioned in your lab subscription, so requests that hit Cosmos will fail. You'll wire this up in a later scenario; for now, confirming the Flask server starts and serves the home page route is enough.
-
-✅ You now have a working starter app ready to be integrated into AZD and Copilot CLI–driven workflows.
+We will intentionally skip local testing during the onsite labs to allow more time to finish the lab.
 
 ---
 
