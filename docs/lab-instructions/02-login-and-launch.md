@@ -53,6 +53,9 @@ Say to Copilot
  Update the settings.json for Copilot CLI to disable rubber duck with this, "builtInAgents": {"rubberDuck": false},
 ```    
 
+![Disabling the Rubber Duck agent in Copilot CLI](images/disablingRubberDuck.png)
+
+
 ## 6. Install the Azure Skills Plugin
 
 1. Add the Microsoft marketplace:
