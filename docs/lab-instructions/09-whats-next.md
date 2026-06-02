@@ -22,7 +22,6 @@ git clone https://github.com/microsoft/Build26-LAB501.git
 
 - **Private endpoints** for Cosmos DB to restrict access to your VNet
 - **VNet integration** for Container Apps network isolation
-- **Key Vault** for secrets management
 - **GitHub Actions CI/CD** with OIDC workload identity federation
 - **Terraform support** via `azure-prepare`
 - **Cosmos DB change feed** integration for event-driven architectures
