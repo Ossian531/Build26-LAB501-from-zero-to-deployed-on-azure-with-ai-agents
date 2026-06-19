@@ -1,6 +1,6 @@
 # What's Next
 
-Congratulations — you've deployed, hardened, broken, diagnosed, and operationalized an Azure Container App using 7 AI skills. Here's where to go from here:
+Congratulations — you've deployed, hardened, broken, diagnosed, and operationalized an Azure Container App using 6 AI skills. Here's where to go from here:
 
 ## 🔗 Clone the Lab Repo
 
