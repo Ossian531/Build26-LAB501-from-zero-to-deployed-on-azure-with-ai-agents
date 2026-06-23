@@ -6,6 +6,13 @@
 
 ## 🔥 LAB501: From Zero to Deployed on Azure with AI Agents
 
+### Use your local language
+
+English | [한국어](./localizations/ko-kr)
+
+> [!NOTE]
+> More language supports are coming up!
+
 ### Session Description
 
 What happens when you let AI agents do the building? In this hands-on lab, you'll go from an empty terminal to a deployed app on Azure — with GitHub Copilot CLI and coding agents handling the scaffolding, coding, debugging, and deployment. You'll use the new Azure skills to provision resources and wire up services through natural language, no portal required. This isn't a demo you watch. You'll walk out with a real, working dev workflow you can take straight to your next project.
