@@ -10,7 +10,6 @@
 - [Azure Developer CLI (azd)](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd)
 - Azure MCP Server
 
-> **Note**: If you need to provision Cosmos DB on your own, follow the instructions in the LEGO dataset repository:  
-> [Cosmos DB for LEGO Sets](https://github.com/charris-msft/cosmosdb-for-legosets)
+> **Note**: If you need to provision **Azure Cosmos DB** on your own, follow the instructions in the [Cosmos DB for LEGO Sets](https://github.com/charris-msft/cosmosdb-for-legosets) repository.
 
 **Next:** [Login & Launch →](02-login-and-launch.md)
