@@ -13,4 +13,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 EXPOSE 8080
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "--timeout", "120", "app:app"]
+# Single worker: Lambda scales by spinning up more execution environments, not
+# more workers per container. --timeout 0 disables gunicorn's worker-timeout
+# watchdog, which otherwise trips spuriously because Lambda freezes the sandbox
+# between invocations (the real request timeout is enforced by Lambda itself).
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "1", "--timeout", "0", "app:app"]

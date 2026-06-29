@@ -22,6 +22,15 @@ _LOCAL_PATH = os.path.join(os.path.dirname(__file__), "data", "lego_sets.json")
 _OBJECT_KEY = os.environ.get("LEGO_DATA_KEY", "lego_sets.json")
 
 _SETS = None
+# Where the currently-loaded catalog came from: "s3", "local", or None.
+_SOURCE = None
+_SOURCE_DETAIL = None
+
+
+def source_info():
+    """Diagnostic: report where the live catalog was loaded from."""
+    _all()
+    return {"source": _SOURCE, "detail": _SOURCE_DETAIL, "count": len(_SETS or [])}
 
 
 def _bucket_name():
@@ -58,7 +67,7 @@ def _all():
     the bundled file is NOT cached, so a later request retries S3 once the bucket
     has been seeded.
     """
-    global _SETS
+    global _SETS, _SOURCE, _SOURCE_DETAIL
     if _SETS is not None:
         return _SETS
 
@@ -68,13 +77,16 @@ def _all():
             data = _load_from_s3(bucket)
             log.info("Loaded %d sets from s3://%s/%s", len(data), bucket, _OBJECT_KEY)
             _SETS = data
+            _SOURCE, _SOURCE_DETAIL = "s3", f"s3://{bucket}/{_OBJECT_KEY}"
             return _SETS
         except Exception as exc:  # noqa: BLE001 - degrade gracefully, retry next call
             log.warning("S3 load failed (%s); falling back to bundled data", exc)
+            _SOURCE_DETAIL = f"s3 load failed: {exc}"
             return _load_from_local()
 
     data = _load_from_local()
     _SETS = data
+    _SOURCE, _SOURCE_DETAIL = "local", _LOCAL_PATH
     return _SETS
 
 

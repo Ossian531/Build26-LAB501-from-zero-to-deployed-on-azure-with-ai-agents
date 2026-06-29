@@ -1,15 +1,23 @@
+import logging
 import urllib.parse
 import urllib.request
-from flask import Flask, render_template, request, abort, Response
+from flask import Flask, render_template, request, abort, Response, jsonify
 from dotenv import load_dotenv
 
 import data
 
 load_dotenv()
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 
 ITEMS_PER_PAGE = 24
+
+
+@app.route("/healthz")
+def healthz():
+    """Diagnostic endpoint: reports where the catalog is loaded from."""
+    return jsonify(status="ok", data=data.source_info())
 
 
 @app.route("/")
