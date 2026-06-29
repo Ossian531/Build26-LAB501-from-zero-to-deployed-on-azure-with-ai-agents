@@ -1,0 +1,572 @@
+[
+  {
+    "id": "75192",
+    "set_number": "75192",
+    "name": "Millennium Falcon",
+    "theme_name": "Star Wars",
+    "year_released": 2017,
+    "number_of_parts": 7541,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Millennium+Falcon"
+  },
+  {
+    "id": "75313",
+    "set_number": "75313",
+    "name": "AT-AT",
+    "theme_name": "Star Wars",
+    "year_released": 2021,
+    "number_of_parts": 6785,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=AT-AT"
+  },
+  {
+    "id": "75252",
+    "set_number": "75252",
+    "name": "Imperial Star Destroyer",
+    "theme_name": "Star Wars",
+    "year_released": 2019,
+    "number_of_parts": 4784,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Imperial+Star+Destroyer"
+  },
+  {
+    "id": "75290",
+    "set_number": "75290",
+    "name": "Mos Eisley Cantina",
+    "theme_name": "Star Wars",
+    "year_released": 2020,
+    "number_of_parts": 3187,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Mos+Eisley+Cantina"
+  },
+  {
+    "id": "75159",
+    "set_number": "75159",
+    "name": "Death Star",
+    "theme_name": "Star Wars",
+    "year_released": 2016,
+    "number_of_parts": 4016,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Death+Star"
+  },
+  {
+    "id": "75341",
+    "set_number": "75341",
+    "name": "Luke Skywalker's Landspeeder",
+    "theme_name": "Star Wars",
+    "year_released": 2022,
+    "number_of_parts": 1890,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Luke+Skywalker's+Landspeeder"
+  },
+  {
+    "id": "75257",
+    "set_number": "75257",
+    "name": "Millennium Falcon",
+    "theme_name": "Star Wars",
+    "year_released": 2019,
+    "number_of_parts": 1351,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Millennium+Falcon"
+  },
+  {
+    "id": "75301",
+    "set_number": "75301",
+    "name": "Luke Skywalker's X-Wing Fighter",
+    "theme_name": "Star Wars",
+    "year_released": 2021,
+    "number_of_parts": 474,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Luke+Skywalker's+X-Wing+Fighter"
+  },
+  {
+    "id": "10256",
+    "set_number": "10256",
+    "name": "Taj Mahal",
+    "theme_name": "Creator Expert",
+    "year_released": 2017,
+    "number_of_parts": 5923,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Taj+Mahal"
+  },
+  {
+    "id": "10276",
+    "set_number": "10276",
+    "name": "Colosseum",
+    "theme_name": "Creator Expert",
+    "year_released": 2020,
+    "number_of_parts": 9036,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Colosseum"
+  },
+  {
+    "id": "10307",
+    "set_number": "10307",
+    "name": "Eiffel Tower",
+    "theme_name": "Icons",
+    "year_released": 2022,
+    "number_of_parts": 10001,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Eiffel+Tower"
+  },
+  {
+    "id": "10303",
+    "set_number": "10303",
+    "name": "Loop Coaster",
+    "theme_name": "Icons",
+    "year_released": 2022,
+    "number_of_parts": 3756,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Loop+Coaster"
+  },
+  {
+    "id": "10497",
+    "set_number": "10497",
+    "name": "Galaxy Explorer",
+    "theme_name": "Icons",
+    "year_released": 2022,
+    "number_of_parts": 1254,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Galaxy+Explorer"
+  },
+  {
+    "id": "10281",
+    "set_number": "10281",
+    "name": "Bonsai Tree",
+    "theme_name": "Botanical",
+    "year_released": 2021,
+    "number_of_parts": 878,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Bonsai+Tree"
+  },
+  {
+    "id": "10280",
+    "set_number": "10280",
+    "name": "Flower Bouquet",
+    "theme_name": "Botanical",
+    "year_released": 2021,
+    "number_of_parts": 756,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Flower+Bouquet"
+  },
+  {
+    "id": "42115",
+    "set_number": "42115",
+    "name": "Lamborghini Si\u00e1n FKP 37",
+    "theme_name": "Technic",
+    "year_released": 2020,
+    "number_of_parts": 3696,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Lamborghini+Si\u00e1n+FKP+37"
+  },
+  {
+    "id": "42143",
+    "set_number": "42143",
+    "name": "Ferrari Daytona SP3",
+    "theme_name": "Technic",
+    "year_released": 2022,
+    "number_of_parts": 3778,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Ferrari+Daytona+SP3"
+  },
+  {
+    "id": "42083",
+    "set_number": "42083",
+    "name": "Bugatti Chiron",
+    "theme_name": "Technic",
+    "year_released": 2018,
+    "number_of_parts": 3599,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Bugatti+Chiron"
+  },
+  {
+    "id": "42131",
+    "set_number": "42131",
+    "name": "App-Controlled Cat D11 Bulldozer",
+    "theme_name": "Technic",
+    "year_released": 2021,
+    "number_of_parts": 3854,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=App-Controlled+Cat+D11+Bulldozer"
+  },
+  {
+    "id": "42110",
+    "set_number": "42110",
+    "name": "Land Rover Defender",
+    "theme_name": "Technic",
+    "year_released": 2019,
+    "number_of_parts": 2573,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Land+Rover+Defender"
+  },
+  {
+    "id": "42100",
+    "set_number": "42100",
+    "name": "Liebherr R 9800 Excavator",
+    "theme_name": "Technic",
+    "year_released": 2019,
+    "number_of_parts": 4108,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Liebherr+R+9800+Excavator"
+  },
+  {
+    "id": "71043",
+    "set_number": "71043",
+    "name": "Hogwarts Castle",
+    "theme_name": "Harry Potter",
+    "year_released": 2018,
+    "number_of_parts": 6020,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Hogwarts+Castle"
+  },
+  {
+    "id": "76405",
+    "set_number": "76405",
+    "name": "Hogwarts Express - Collectors' Edition",
+    "theme_name": "Harry Potter",
+    "year_released": 2022,
+    "number_of_parts": 5129,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Hogwarts+Express+-+Collectors'+Edition"
+  },
+  {
+    "id": "76391",
+    "set_number": "76391",
+    "name": "Hogwarts Icons - Collectors' Edition",
+    "theme_name": "Harry Potter",
+    "year_released": 2021,
+    "number_of_parts": 3010,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Hogwarts+Icons+-+Collectors'+Edition"
+  },
+  {
+    "id": "75978",
+    "set_number": "75978",
+    "name": "Diagon Alley",
+    "theme_name": "Harry Potter",
+    "year_released": 2020,
+    "number_of_parts": 5544,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Diagon+Alley"
+  },
+  {
+    "id": "71741",
+    "set_number": "71741",
+    "name": "Ninjago City Gardens",
+    "theme_name": "Ninjago",
+    "year_released": 2021,
+    "number_of_parts": 5685,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Ninjago+City+Gardens"
+  },
+  {
+    "id": "70620",
+    "set_number": "70620",
+    "name": "Ninjago City",
+    "theme_name": "Ninjago",
+    "year_released": 2017,
+    "number_of_parts": 4867,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Ninjago+City"
+  },
+  {
+    "id": "71799",
+    "set_number": "71799",
+    "name": "Ninjago City Markets",
+    "theme_name": "Ninjago",
+    "year_released": 2023,
+    "number_of_parts": 6163,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Ninjago+City+Markets"
+  },
+  {
+    "id": "21318",
+    "set_number": "21318",
+    "name": "Tree House",
+    "theme_name": "Ideas",
+    "year_released": 2019,
+    "number_of_parts": 3036,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Tree+House"
+  },
+  {
+    "id": "21322",
+    "set_number": "21322",
+    "name": "Pirates of Barracuda Bay",
+    "theme_name": "Ideas",
+    "year_released": 2020,
+    "number_of_parts": 2545,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Pirates+of+Barracuda+Bay"
+  },
+  {
+    "id": "21333",
+    "set_number": "21333",
+    "name": "Vincent van Gogh - The Starry Night",
+    "theme_name": "Ideas",
+    "year_released": 2022,
+    "number_of_parts": 2316,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Vincent+van+Gogh+-+The+Starry+Night"
+  },
+  {
+    "id": "21058",
+    "set_number": "21058",
+    "name": "The Great Pyramid of Giza",
+    "theme_name": "Architecture",
+    "year_released": 2022,
+    "number_of_parts": 1476,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=The+Great+Pyramid+of+Giza"
+  },
+  {
+    "id": "21044",
+    "set_number": "21044",
+    "name": "Paris",
+    "theme_name": "Architecture",
+    "year_released": 2019,
+    "number_of_parts": 649,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Paris"
+  },
+  {
+    "id": "21051",
+    "set_number": "21051",
+    "name": "Tokyo",
+    "theme_name": "Architecture",
+    "year_released": 2020,
+    "number_of_parts": 547,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Tokyo"
+  },
+  {
+    "id": "60198",
+    "set_number": "60198",
+    "name": "Cargo Train",
+    "theme_name": "City",
+    "year_released": 2018,
+    "number_of_parts": 1226,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Cargo+Train"
+  },
+  {
+    "id": "60337",
+    "set_number": "60337",
+    "name": "Express Passenger Train",
+    "theme_name": "City",
+    "year_released": 2022,
+    "number_of_parts": 764,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Express+Passenger+Train"
+  },
+  {
+    "id": "60271",
+    "set_number": "60271",
+    "name": "Main Square",
+    "theme_name": "City",
+    "year_released": 2021,
+    "number_of_parts": 1517,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Main+Square"
+  },
+  {
+    "id": "10300",
+    "set_number": "10300",
+    "name": "Back to the Future Time Machine",
+    "theme_name": "Icons",
+    "year_released": 2022,
+    "number_of_parts": 1872,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Back+to+the+Future+Time+Machine"
+  },
+  {
+    "id": "76989",
+    "set_number": "76989",
+    "name": "Horizon Forbidden West: Tallneck",
+    "theme_name": "Gaming",
+    "year_released": 2023,
+    "number_of_parts": 1222,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Horizon+Forbidden+West:+Tallneck"
+  },
+  {
+    "id": "31203",
+    "set_number": "31203",
+    "name": "World Map",
+    "theme_name": "Art",
+    "year_released": 2021,
+    "number_of_parts": 11695,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=World+Map"
+  },
+  {
+    "id": "31197",
+    "set_number": "31197",
+    "name": "Andy Warhol's Marilyn Monroe",
+    "theme_name": "Art",
+    "year_released": 2022,
+    "number_of_parts": 3341,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Andy+Warhol's+Marilyn+Monroe"
+  },
+  {
+    "id": "75810",
+    "set_number": "75810",
+    "name": "The Upside Down",
+    "theme_name": "Stranger Things",
+    "year_released": 2019,
+    "number_of_parts": 2287,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=The+Upside+Down"
+  },
+  {
+    "id": "10294",
+    "set_number": "10294",
+    "name": "Titanic",
+    "theme_name": "Icons",
+    "year_released": 2021,
+    "number_of_parts": 9090,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Titanic"
+  },
+  {
+    "id": "92176",
+    "set_number": "92176",
+    "name": "NASA Apollo Saturn V",
+    "theme_name": "Ideas",
+    "year_released": 2017,
+    "number_of_parts": 1969,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=NASA+Apollo+Saturn+V"
+  },
+  {
+    "id": "10283",
+    "set_number": "10283",
+    "name": "NASA Space Shuttle Discovery",
+    "theme_name": "Icons",
+    "year_released": 2021,
+    "number_of_parts": 2354,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=NASA+Space+Shuttle+Discovery"
+  },
+  {
+    "id": "21034",
+    "set_number": "21034",
+    "name": "London",
+    "theme_name": "Architecture",
+    "year_released": 2017,
+    "number_of_parts": 468,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=London"
+  },
+  {
+    "id": "76139",
+    "set_number": "76139",
+    "name": "1989 Batmobile",
+    "theme_name": "DC",
+    "year_released": 2019,
+    "number_of_parts": 3306,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=1989+Batmobile"
+  },
+  {
+    "id": "76240",
+    "set_number": "76240",
+    "name": "Batmobile Tumbler",
+    "theme_name": "DC",
+    "year_released": 2021,
+    "number_of_parts": 2049,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Batmobile+Tumbler"
+  },
+  {
+    "id": "31109",
+    "set_number": "31109",
+    "name": "Pirate Ship",
+    "theme_name": "Creator 3-in-1",
+    "year_released": 2020,
+    "number_of_parts": 1262,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Pirate+Ship"
+  },
+  {
+    "id": "60380",
+    "set_number": "60380",
+    "name": "Downtown",
+    "theme_name": "City",
+    "year_released": 2023,
+    "number_of_parts": 2010,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Downtown"
+  },
+  {
+    "id": "43217",
+    "set_number": "43217",
+    "name": "'Up' House",
+    "theme_name": "Disney",
+    "year_released": 2023,
+    "number_of_parts": 598,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text='Up'+House"
+  },
+  {
+    "id": "76423",
+    "set_number": "76423",
+    "name": "Hogwarts Express & Hogsmeade Station",
+    "theme_name": "Harry Potter",
+    "year_released": 2023,
+    "number_of_parts": 1074,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Hogwarts+Express+&+Hogsmeade+Station"
+  },
+  {
+    "id": "75367",
+    "set_number": "75367",
+    "name": "Venator-Class Republic Attack Cruiser",
+    "theme_name": "Star Wars",
+    "year_released": 2023,
+    "number_of_parts": 5374,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Venator-Class+Republic+Attack+Cruiser"
+  },
+  {
+    "id": "10302",
+    "set_number": "10302",
+    "name": "Optimus Prime",
+    "theme_name": "Icons",
+    "year_released": 2022,
+    "number_of_parts": 1508,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Optimus+Prime"
+  },
+  {
+    "id": "21330",
+    "set_number": "21330",
+    "name": "Home Alone",
+    "theme_name": "Ideas",
+    "year_released": 2021,
+    "number_of_parts": 3955,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Home+Alone"
+  },
+  {
+    "id": "71040",
+    "set_number": "71040",
+    "name": "The Disney Castle",
+    "theme_name": "Disney",
+    "year_released": 2016,
+    "number_of_parts": 4080,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=The+Disney+Castle"
+  },
+  {
+    "id": "43222",
+    "set_number": "43222",
+    "name": "Disney Castle",
+    "theme_name": "Disney",
+    "year_released": 2023,
+    "number_of_parts": 4837,
+    "type": "normal",
+    "image_url": "https://placehold.co/600x480/0b0e14/ffd700/png?text=Disney+Castle"
+  }
+]
