@@ -1,25 +1,80 @@
-"""Local data layer backed by a bundled JSON dataset.
+"""Data layer for the LEGO Set Browser.
 
-This replaces the original Azure Cosmos DB access layer so the app can run
-standalone (e.g. as an AWS Lambda) with no external database. The functions
-here implement the same queries the routes need: featured sets, totals,
-browse with search/filter/sort/paging, lookup by id, and related sets.
+The catalog lives as a single JSON object in an S3 bucket (the "database"):
+spawned wires the bucket name into the Lambda via a `<NAME>_BUCKET` env var and
+grants it read access. The object is fetched once per warm Lambda and cached in
+memory; filtering/sorting/paging happen in Python.
+
+To update the catalog, re-upload the JSON to the bucket — no redeploy needed:
+    spawned upload <project> --component <bucket> --key lego_sets.json --file data/lego_sets.json
+
+If no bucket is configured (e.g. local development), it falls back to the
+bundled data/lego_sets.json so the app still runs.
 """
 
 import json
+import logging
 import os
 
-_DATA_PATH = os.path.join(os.path.dirname(__file__), "data", "lego_sets.json")
+log = logging.getLogger("lego.data")
+
+_LOCAL_PATH = os.path.join(os.path.dirname(__file__), "data", "lego_sets.json")
+_OBJECT_KEY = os.environ.get("LEGO_DATA_KEY", "lego_sets.json")
 
 _SETS = None
 
 
+def _bucket_name():
+    """Resolve the data bucket from env.
+
+    Prefer an explicit LEGO_DATA_BUCKET, otherwise accept whatever `<NAME>_BUCKET`
+    var spawned injected from the Function->Bucket connection.
+    """
+    explicit = os.environ.get("LEGO_DATA_BUCKET")
+    if explicit:
+        return explicit
+    for key, value in os.environ.items():
+        if key.endswith("_BUCKET") and value:
+            return value
+    return None
+
+
+def _load_from_s3(bucket):
+    import boto3  # imported lazily so local dev needs no AWS deps
+    s3 = boto3.client("s3")
+    obj = s3.get_object(Bucket=bucket, Key=_OBJECT_KEY)
+    return json.loads(obj["Body"].read())
+
+
+def _load_from_local():
+    with open(_LOCAL_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def _all():
-    """Load and cache the dataset."""
+    """Return the catalog, loading + caching it on first use.
+
+    A successful S3 read is cached for the life of the warm Lambda. A fallback to
+    the bundled file is NOT cached, so a later request retries S3 once the bucket
+    has been seeded.
+    """
     global _SETS
-    if _SETS is None:
-        with open(_DATA_PATH, encoding="utf-8") as f:
-            _SETS = json.load(f)
+    if _SETS is not None:
+        return _SETS
+
+    bucket = _bucket_name()
+    if bucket:
+        try:
+            data = _load_from_s3(bucket)
+            log.info("Loaded %d sets from s3://%s/%s", len(data), bucket, _OBJECT_KEY)
+            _SETS = data
+            return _SETS
+        except Exception as exc:  # noqa: BLE001 - degrade gracefully, retry next call
+            log.warning("S3 load failed (%s); falling back to bundled data", exc)
+            return _load_from_local()
+
+    data = _load_from_local()
+    _SETS = data
     return _SETS
 
 
